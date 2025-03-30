@@ -23,16 +23,16 @@ public class WebScraping {
         String directoryName = "anexos";
         File directory = CreateDirectory.newDirectory(directoryName);
 
-        try{
+        try {
             Document document = Jsoup.connect(url).get();
-            Elements links = document.select("a[href*="+keyword+"][href$=.pdf]");
+            Elements links = document.select("a[href*=" + keyword + "][href$=.pdf]");
 
             List<String> files = new ArrayList<>();
-            for(Element link: links){
+            for (Element link : links) {
                 String urlFile = link.absUrl("href");
                 files.add(Downloader.fileDownloader(directory.getPath(), urlFile));
             }
-            String fileZipName = directory+"\\anexos.zip";
+            String fileZipName = directory + "\\anexos.zip";
 
             FileZip.Ziper(fileZipName, files);
 

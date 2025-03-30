@@ -10,17 +10,17 @@ import java.nio.file.Path;
 
 public class Downloader {
 
-    public static String fileDownloader(String directory, String urlFile){
+    public static String fileDownloader(String directory, String urlFile) {
 
         // O nome do arquivo será extraido logo após a ultima barra ("/") da url.
-        String fileName = urlFile.substring(urlFile.lastIndexOf('/') +1);
+        String fileName = urlFile.substring(urlFile.lastIndexOf('/') + 1);
 
-        try (HttpClient client = HttpClient.newHttpClient()){
+        try (HttpClient client = HttpClient.newHttpClient()) {
 
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(urlFile))
-                .GET()
-                .build();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(urlFile))
+                    .GET()
+                    .build();
 
             String pathFile = directory + File.separator + fileName;
 
@@ -28,10 +28,10 @@ public class Downloader {
                     (request, HttpResponse.BodyHandlers.ofFile
                             (Path.of(pathFile)));
 
-            if(response.statusCode() == 200){
+            if (response.statusCode() == 200) {
                 System.out.println("Arquivo baixado com sucesso!");
                 return pathFile;
-            }else {
+            } else {
                 System.out.println("Erro ao tentar baixar arquivo.");
                 return null;
             }
