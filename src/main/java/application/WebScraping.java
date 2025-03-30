@@ -6,9 +6,12 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import utils.CreateDirectory;
 import utils.Downloader;
+import utils.FileZip;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WebScraping {
     public static void main(String[] args) {
@@ -24,13 +27,17 @@ public class WebScraping {
             Document document = Jsoup.connect(url).get();
             Elements links = document.select("a[href*="+keyword+"][href$=.pdf]");
 
+            List<String> files = new ArrayList<>();
             for(Element link: links){
                 String urlFile = link.absUrl("href");
-                Downloader.fileDownloader(directory.getPath(), urlFile);
+                files.add(Downloader.fileDownloader(directory.getPath(), urlFile));
             }
+            String fileZipName = directory+"\\anexos.zip";
+
+            FileZip.Ziper(fileZipName, files);
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e.getMessage());
         }
     }
 }
