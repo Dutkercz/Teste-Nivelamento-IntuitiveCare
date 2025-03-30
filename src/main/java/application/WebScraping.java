@@ -4,6 +4,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import utils.CreateDirectory;
+import utils.Downloader;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,14 +18,15 @@ public class WebScraping {
         String keyword = "Anexo";
 
         String directoryName = "anexos";
-        CreateDirectory.newDirectory(directoryName);
+        File directory = CreateDirectory.newDirectory(directoryName);
 
         try{
             Document document = Jsoup.connect(url).get();
             Elements links = document.select("a[href*="+keyword+"][href$=.pdf]");
 
             for(Element link: links){
-                System.out.println("Document: "+ link);
+                String urlFile = link.absUrl("href");
+                Downloader.fileDownloader(directory.getPath(), urlFile);
             }
 
         } catch (IOException e) {
