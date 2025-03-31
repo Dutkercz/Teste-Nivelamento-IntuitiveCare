@@ -1,4 +1,4 @@
-package utils;
+package Test1.application.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,7 +24,7 @@ public class FileZip {
                         zipOut.write(buffer, 0, length);
                     }
                     zipOut.closeEntry();
-                    System.out.println("Arquivo " + file + "adicionado ao zip");
+                    System.out.println("C:\\anexos\\Anexo_II_DUT_2021_RN_465.2021_RN628.2025_RN629.2025.pdf" + file + " adicionado ao zip");
                 }
             }
         } catch (IOException e) {
