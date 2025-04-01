@@ -14,7 +14,6 @@ public class FileZip {
 
         try (ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(fileName))) {
             for (String file : files) {
-                System.out.println(file);
                 File fileToZip = new File(file);
                 try (FileInputStream fileIn = new FileInputStream(fileToZip)) {
                     zipOut.putNextEntry(new ZipEntry(fileToZip.getName()));
@@ -24,7 +23,6 @@ public class FileZip {
                         zipOut.write(buffer, 0, length);
                     }
                     zipOut.closeEntry();
-                    System.out.println("C:\\anexos\\Anexo_II_DUT_2021_RN_465.2021_RN628.2025_RN629.2025.pdf" + file + " adicionado ao zip");
                 }
             }
         } catch (IOException e) {

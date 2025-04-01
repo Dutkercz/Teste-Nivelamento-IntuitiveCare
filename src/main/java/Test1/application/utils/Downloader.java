@@ -29,10 +29,10 @@ public class Downloader {
                             (Path.of(pathFile)));
 
             if (response.statusCode() == 200) {
-                System.out.println("Arquivo baixado com sucesso!");
+                System.out.println("Download concluido!");
                 return pathFile;
             } else {
-                System.out.println("Erro ao tentar baixar arquivo.");
+                System.out.println("Erro ao tentar efetuar o download.");
                 return null;
             }
         } catch (IOException | InterruptedException e) {

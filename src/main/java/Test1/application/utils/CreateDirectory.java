@@ -6,7 +6,7 @@ public class CreateDirectory {
 
     public static File newDirectory(String directoryName) {
 
-        File directory = new File("C:\\" + directoryName + "\\");
+        File directory = new File(directoryName);
         if (!directory.exists()) {
             directory.mkdir();
             System.out.println("Diretorio criado em " + directory.getAbsolutePath());
