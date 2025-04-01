@@ -1,4 +1,4 @@
-package Test1.application.utils;
+package test1;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,7 +10,7 @@ import java.util.zip.ZipOutputStream;
 
 public class FileZip {
 
-    public static void Ziper(String fileName, List<String> files) {
+    public static void zipper(String fileName, List<String> files) {
 
         try (ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(fileName))) {
             for (String file : files) {

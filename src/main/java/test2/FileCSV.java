@@ -7,11 +7,11 @@ import java.util.List;
 
 public class FileCSV {
 
-    public static void fileToCSV (List<List<String>> table, String csvPath) {
+    public static void fileToCSV(List<List<String>> table, String csvPath) {
 
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(csvPath))){
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(csvPath))) {
 
-            for (List<String> row : table){
+            for (List<String> row : table) {
                 String csvRow = String.join(",", row);
                 bufferedWriter.write(csvRow);
                 bufferedWriter.newLine();
