@@ -11,7 +11,7 @@ Este repositório contém o código para o teste de nivelamento para a vaga de e
   - Utilizar um dos arquivos `.pdf` para transformá-lo em um arquivo `.csv` e, em seguida, salvá-lo em um arquivo `.zip`.
 
 - **Teste 3:**
-  ...
+  - Teste banco de dados, criar scripts `.sql`, que executem taferas que foram exigidas.
 
 ### Estrutura do Projeto
 
@@ -25,6 +25,7 @@ Este projeto foi desenvolvido com as seguintes tecnologias:
 
 - **Java 21**: Linguagem principal.
 - **Maven**: Gerenciamento de dependências.
+- **MySQL**: Banco de dados para desenvolvimento dos scripts.
 
 ### Contatos
 - **LinkedIn**: [Cristian T. Dutkercz Rosa](https://www.linkedin.com/in/cristiandutkercz/)
