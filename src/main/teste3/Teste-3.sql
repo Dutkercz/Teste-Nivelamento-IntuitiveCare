@@ -29,7 +29,7 @@
 -- Tabela para os demonstrativos contábeis por operadora.
     create table demonstracoes_contabeis (
         ID int AUTO_INCREMENT primary key,
-        DATA date null,
+        _DATA date null,
         REG_ANS varchar(10) null,
         CD_CONTA_CONTABIL varchar(20) null,
         DESCRICAO text,
@@ -44,3 +44,95 @@
     enclosed by '"'
     lines terminated by '\n'
     ignore 1 rows;
+
+-- Importar o aruivo CSV com os demonstrativos contábeis das operadoras nos anos de 2023 (4 arquivos).
+    load data infile 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/1T2023.csv'
+    into table demonstracoes_contabeis
+    fields terminated by ';'
+    enclosed by '"'
+    lines terminated by '\n'
+    ignore 1 rows
+    (_DATA, REG_ANS, CD_CONTA_CONTABIL, DESCRICAO, @VL_SALDO_INICIAL_, @VL_SALDO_FINAL_)
+    set
+    	VL_SALDO_INICIAL = REPLACE(@VL_SALDO_INICIAL_, ',', '.'),
+    	VL_SALDO_FINAL = REPLACE(@VL_SALDO_FINAL_, ',', '.');
+
+    load data infile 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/2T2023.csv'
+    into table demonstracoes_contabeis
+    fields terminated by ";"
+    enclosed by '"'
+    lines terminated by '\n'
+    ignore 1 rows
+    (_DATA, REG_ANS, CD_CONTA_CONTABIL, DESCRICAO, @VL_SALDO_INICIAL_, @VL_SALDO_FINAL_)
+    set
+    	VL_SALDO_INICIAL = REPLACE(@VL_SALDO_INICIAL_, ',', '.'),
+    	VL_SALDO_FINAL = REPLACE(@VL_SALDO_FINAL_, ',', '.');
+
+    load data infile 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/3T2023.csv'
+    into table demonstracoes_contabeis
+    fields terminated by ";"
+    enclosed by '"'
+    lines terminated by '\n'
+    ignore 1 rows
+    (_DATA, REG_ANS, CD_CONTA_CONTABIL, DESCRICAO, @VL_SALDO_INICIAL_, @VL_SALDO_FINAL_)
+    set
+    	VL_SALDO_INICIAL = REPLACE(@VL_SALDO_INICIAL_, ',', '.'),
+    	VL_SALDO_FINAL = REPLACE(@VL_SALDO_FINAL_, ',', '.');
+
+    load data infile 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/4T2023.csv'
+    into table demonstracoes_contabeis
+    fields terminated by ";"
+    enclosed by '"'
+    lines terminated by '\n'
+    ignore 1 rows
+    (_DATA, REG_ANS, CD_CONTA_CONTABIL, DESCRICAO, @VL_SALDO_INICIAL_, @VL_SALDO_FINAL_)
+    set
+    	VL_SALDO_INICIAL = REPLACE(@VL_SALDO_INICIAL_, ',', '.'),
+    	VL_SALDO_FINAL = REPLACE(@VL_SALDO_FINAL_, ',', '.');
+
+
+    -- Agora os arquivos contábeis de 2024 (4 arquivos)
+
+    load data infile 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/1T2024.csv'
+    into table demonstracoes_contabeis
+    fields terminated by ";"
+    enclosed by '"'
+    lines terminated by '\n'
+    ignore 1 rows
+    (_DATA, REG_ANS, CD_CONTA_CONTABIL, DESCRICAO, @VL_SALDO_INICIAL_, @VL_SALDO_FINAL_)
+    set
+    	VL_SALDO_INICIAL = REPLACE(@VL_SALDO_INICIAL_, ',', '.'),
+    	VL_SALDO_FINAL = REPLACE(@VL_SALDO_FINAL_, ',', '.');
+
+    load data infile 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/2T2024.csv'
+    into table demonstracoes_contabeis
+    fields terminated by ";"
+    enclosed by '"'
+    lines terminated by '\n'
+    ignore 1 rows
+    (_DATA, REG_ANS, CD_CONTA_CONTABIL, DESCRICAO, @VL_SALDO_INICIAL_, @VL_SALDO_FINAL_)
+    set
+    	VL_SALDO_INICIAL = REPLACE(@VL_SALDO_INICIAL_, ',', '.'),
+    	VL_SALDO_FINAL = REPLACE(@VL_SALDO_FINAL_, ',', '.');
+
+    load data infile 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/3T2024.csv'
+    into table demonstracoes_contabeis
+    fields terminated by ";"
+    enclosed by '"'
+    lines terminated by '\n'
+    ignore 1 rows
+    (_DATA, REG_ANS, CD_CONTA_CONTABIL, DESCRICAO, @VL_SALDO_INICIAL_, @VL_SALDO_FINAL_)
+    set
+    	VL_SALDO_INICIAL = REPLACE(@VL_SALDO_INICIAL_, ',', '.'),
+    	VL_SALDO_FINAL = REPLACE(@VL_SALDO_FINAL_, ',', '.');
+
+    load data infile 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/4T2024.csv'
+    into table demonstracoes_contabeis
+    fields terminated by ";"
+    enclosed by '"'
+    lines terminated by '\n'
+    ignore 1 rows
+    (_DATA, REG_ANS, CD_CONTA_CONTABIL, DESCRICAO, @VL_SALDO_INICIAL_, @VL_SALDO_FINAL_)
+    set
+    	VL_SALDO_INICIAL = REPLACE(@VL_SALDO_INICIAL_, ',', '.'),
+    	VL_SALDO_FINAL = REPLACE(@VL_SALDO_FINAL_, ',', '.');
