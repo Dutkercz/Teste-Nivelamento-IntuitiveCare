@@ -28,25 +28,25 @@ public class WebScraping {
         String csvZipName = directory + "\\Teste_CristianDutkercz.zip";
         String csvPathFile = directory + "\\dados.csv";
 
-//        try {
-//            Document document = Jsoup.connect(URL).get();
-//            Elements links = document.select("a[href*=" + LINK_KEYWORD + "][href$=.pdf]");
-//
-//            List<String> files = new ArrayList<>();
-//            for (Element link : links) {
-//                System.out.println("Processando download.");
-//                String urlFile = link.absUrl("href");
-//                files.add(Downloader.fileDownloader(directory.getPath(), urlFile));
-//            }
-//            FileZip.zipper(fileZipName, files);
+        try {
+            Document document = Jsoup.connect(URL).get();
+            Elements links = document.select("a[href*=" + LINK_KEYWORD + "][href$=.pdf]");
+
+            List<String> files = new ArrayList<>();
+            for (Element link : links) {
+                System.out.println("Processando download.");
+                String urlFile = link.absUrl("href");
+                files.add(Downloader.fileDownloader(directory.getPath(), urlFile));
+            }
+            FileZip.zipper(fileZipName, files);
 
             String pdfPath = directory + "\\Anexo_I_Rol_2021RN_465.2021_RN627L.2024.pdf";
             List<List<String>> tableFile = PDFExtract.extractDataPDF(pdfPath);
             FileCSV.fileToCSV(tableFile, csvPathFile);
             FileZip.zipper(csvZipName, List.of(csvPathFile));
-//
-//        } catch (IOException e) {
-//            throw new RuntimeException(e.getMessage());
-//        }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 }
