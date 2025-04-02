@@ -22,7 +22,7 @@
         Endereco_Eletronico varchar(255) null,
         Representante varchar(100) null,
         Cargo_Representante varchar(100) null,
-        Regiao_de_Comercializacao int null,
+        Regiao_de_Comercializacao varchar(100) null, -- modificada de int para varchar
         Data_Registro_ANS date null
     );
 
@@ -36,3 +36,11 @@
         VL_SALDO_INICIAL decimal(15, 2),
         VL_SALDO_FINAL decimal(15, 2)
     );
+
+-- Importar o aruivo CSV com os dados cadastrais das operadoras.
+    load data infile 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/Relatorio_cadop.csv'
+    into table operadoras_ativas
+    fields terminated by ';'
+    enclosed by '"'
+    lines terminated by '\n'
+    ignore 1 rows;
