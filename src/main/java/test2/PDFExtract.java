@@ -20,7 +20,7 @@ public class PDFExtract {
             String[] rows = pdfText.split("\n");
 
             for (String row : rows) {
-                List<String> rowInfo = new ArrayList<>(List.of(row.split("\\s{2,}")));
+                List<String> rowInfo = new ArrayList<>(List.of(row.split("\\s+")));
                 tableInfo.add(ConvertAbbreviations.converter(rowInfo));
             }
             return tableInfo;

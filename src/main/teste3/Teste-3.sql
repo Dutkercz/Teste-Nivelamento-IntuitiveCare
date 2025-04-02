@@ -136,3 +136,33 @@
     set
     	VL_SALDO_INICIAL = REPLACE(@VL_SALDO_INICIAL_, ',', '.'),
     	VL_SALDO_FINAL = REPLACE(@VL_SALDO_FINAL_, ',', '.');
+
+
+-- Filtar as 10 operadoras com maiores despesas no ultimo trimestre (considerando o ano de 2024)
+
+select
+    dc.REG_ANS,
+    oa.Razao_Social,
+    sum(dc.VL_SALDO_FINAL) as total_despesa
+from demonstracoes_contabeis dc
+join operadoras_ativas oa on dc.REG_ANS = oa.Registro_ANS
+where dc.DESCRICAO like '%EVENTOS/ SINISTROS CONHECIDOS OU AVISADOS  DE ASSISTÊNCIA A SAÚDE MEDICO HOSPITALAR %'
+  and dc._DATA between '2024-01-01' and '2024-01-02'
+group by dc.REG_ANS, oa.Razao_Social
+order by total_despesa desc
+LIMIT 10;
+
+
+-- Filtro para 10 operadoras com maiores despesas nessa categoria (considerando o ano 2024)
+
+select
+    dc.REG_ANS,
+    oa.Razao_Social,
+    sum(dc.VL_SALDO_FINAL) as total_despesa
+from demonstracoes_contabeis dc
+join operadoras_ativas oa on dc.REG_ANS = oa.Registro_ANS
+where dc.DESCRICAO like '%EVENTOS/ SINISTROS CONHECIDOS OU AVISADOS  DE ASSISTÊNCIA A SAÚDE MEDICO HOSPITALAR %'
+  and year(dc._DATA) = '2024'
+group by dc.REG_ANS, oa.Razao_Social
+order by total_despesa desc
+LIMIT 10;
